@@ -24,17 +24,17 @@ app.use(function(req, res, next) {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    var html = '<!DOCTYPE html>';
-    html+= '<html>';
-    html+= '  <head>';
-    html+= '    <title></title>';
-    html+= '  </head>';
-    html+= '  <body>';
-    html+= '    <h1>'+err.message+'</h1>';
-    html+= '    <h2>'+err.status+'</h2>';
-    html+= '    <pre>'+err.stack+'</pre>';
-    html+= '  </body>';
-    html+= '</html>';
+    var html = `<!DOCTYPE html>
+            <html>
+              <head>
+                <title></title>
+              </head>
+              <body>
+                <h1>${err.message}</h1>
+                <h2>${err.status}</h2>
+                <pre>${err.stack}</pre>
+              </body>
+            </html>`;
     res.send(html);
 }); 
 
